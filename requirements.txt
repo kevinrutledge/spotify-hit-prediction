@@ -1,0 +1,15 @@
+duckdb
+fastparquet
+matplotlib
+numpy
+pandas
+polars
+pyarrow
+scikit-learn
+seaborn
+umap-learn
+hdbscan
+xgboost
+lightgbm
+catboost
+shap
