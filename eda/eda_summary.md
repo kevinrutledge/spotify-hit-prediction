@@ -10,7 +10,7 @@ I chose this because the balance makes it straightforward for classification. Th
 
 ### Musical features evolved dramatically
 
-![Temporal Evolution](eda/figures/temporal_evolution.png)
+![Temporal Evolution](figures/temporal_evolution.png)
 
 The changes across decades are striking. Acousticness dropped from 0.62 in the 60s to 0.22 by the 2000s. Loudness increased by about 4.5dB over the same period. Energy started low at 0.45 in the 60s and climbed to 0.69 by the 2000s.
 
@@ -20,7 +20,7 @@ This temporal drift is probably the biggest thing to think about for modeling. W
 
 ### Hits have measurable differences from flops
 
-![Feature Distributions](eda/figures/feature_distributions.png)
+![Feature Distributions](figures/feature_distributions.png)
 
 The boxplots show separation between hits and flops:
 
@@ -30,13 +30,13 @@ The boxplots show separation between hits and flops:
 
 But there's heavy overlap in all the distributions. No single feature cleanly separates the classes. You can see this especially in the acousticness and energy plots where the boxes overlap substantially.
 
-![Correlation Heatmap](eda/figures/correlation_heatmap.png)
+![Correlation Heatmap](figures/correlation_heatmap.png)
 
 The correlation heatmap shows expected relationships. Energy and loudness correlate at 0.77. Energy and acousticness have a strong negative correlation at -0.72. Danceability and valence correlate at 0.55.
 
 ### No clean boundary between classes
 
-![UMAP Clustering](eda/figures/umap_clustering.png)
+![UMAP Clustering](figures/umap_clustering.png)
 
 The UMAP projection tells the real story. Hits and flops are thoroughly mixed. There are some regions that lean more green (hits) or more red (flops) but no clear separation. This explains why this won't be trivial to classify.
 
