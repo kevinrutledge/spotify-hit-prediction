@@ -1,14 +1,14 @@
-# Predicting Billboard Hits from Audio Features: A Validated Progression from Baseline to Artist-Augmented Models
+## Predicting Billboard Hits from Audio Features: A Validated Progression from Baseline to Artist-Augmented Models
 
 **Kevin Rutledge**
 
-## Abstract
+### Abstract
 
 The music industry invested $7.1 billion in Artists & Repertoire (A&R) and marketing in 2023 ([IFPI](https://www.ifpi.org/ifpi-global-music-report-global-recorded-music-revenues-grew-10-2-in-2023/)), yet promotional spending shows diminishing returns at scale. Record labels need predictive models to guide signing decisions and marketing investment before release. Academic research establishes 85-89% as the accuracy ceiling for audio-only hit prediction, with artist popularity metrics pushing performance to 90-92%. This study replicates and validates these benchmarks through a three-stage modeling progression on 12,270 songs from 2000-2019, demonstrating that temporal segmentation drives more improvement than algorithmic complexity and that artist context dominates all audio features combined.
 
 The core finding is that audio features alone achieve 85.4% accuracy when properly segmented by era, rising to 90.8% with artist metadata from Spotify's API. Temporal validation (training on 2000-2009, testing on 2010-2019) confirms the model generalizes to future data at 89.3% accuracy. These results match published benchmarks precisely, validating both the methodology and the theoretical ceiling imposed by social contagion effects that create 20-30% irreducible variance in hit success ([Salganik et al.](https://www.princeton.edu/~mjs3/salganik_dodds_watts06_full.pdf)).
 
-## Methodology
+### Methodology
 
 The dataset contains 41,106 tracks from 1960-2019 with 15 audio features from Spotify's API (danceability, energy, loudness, tempo, valence, acousticness, instrumentalness, speechiness, liveness, key, mode, duration, time signature, chorus_hit, sections) and binary labels indicating Billboard Hot 100 appearance. The class balance is perfect with 20,553 hits versus 20,553 flops.
 
@@ -26,7 +26,7 @@ Artist augmentation required fetching metadata for all 12,270 recent songs throu
 
 Temporal validation tested whether the model generalizes to future data by training on 2000-2009 songs and testing on 2010-2019. Audio-only accuracy dropped to 82.89% (2.5% decrease) and augmented accuracy fell to 89.31% (1.5% decrease). Both results remain within literature benchmarks, proving the model predicts future hits from past training without overfitting to temporal leakage in random splits.
 
-## Results
+### Results
 
 The progression demonstrates clear improvement at each stage.
 
@@ -54,7 +54,7 @@ Confusion matrices visualize where errors concentrate. The augmented model minim
 
 ![Confusion Matrices](models/figures/confusion_matrices.png)
 
-## Analysis
+### Analysis
 
 Temporal segmentation proved more valuable than algorithmic sophistication. The 6.46% gain from restricting to 2000-2019 data exceeds any improvement from hyperparameter tuning or alternative algorithms. This finding has practical implications in that investing in better data curation delivers more value than chasing marginal algorithmic gains. Musical taste evolved substantially across the 60-year span. What made a hit in 1965 differs fundamentally from what succeeded in 2015.
 
@@ -68,7 +68,7 @@ The MusicLab experiment provides the theoretical foundation for understanding wh
 
 Temporal validation at 89.3% accuracy (training 2000s, testing 2010s) proves the model generalizes to future data. The 1.5% drop from random split performance (90.8%) falls within expected ranges and maintains the 90%+ benchmark. The augmented model's 95.6% recall means it catches nearly all actual hits, with only 4.4% slipping through. High recall suits talent discovery applications where scouting 10 artists to find one breakthrough beats missing that breakthrough entirely.
 
-## Limitations
+### Limitations
 
 The 9.2% error rate appears irreducible with current features. Academic consensus establishes 55-70% as the practical ceiling using audio features alone, with the highest rigorously validated accuracy reaching 69% using neurophysiologic fMRI responses which remains commercially impractical ([Merritt et al.](https://pmc.ncbi.nlm.nih.gov/articles/PMC10318137/)). Social contagion creates irreducible stochasticity where success depends on early adopter network position and random initial conditions rather than objective quality.
 
@@ -76,7 +76,7 @@ The dataset's binary hit definition introduces noise. Any Billboard Hot 100 appe
 
 Missing features limit predictive power. The model lacks TikTok viral metrics (84% of 2024 chart entries), sync placement data (TV/film integration driving multi-decade catalog surges), playlist politics (Discovery Mode and promotional spending), competitive context (release timing relative to major artists), and cultural event timing (documentaries, artist deaths, streaming debuts). These factors contribute measurable variance but remain absent from training data.
 
-## Conclusion
+### Conclusion
 
 This study validates published benchmarks for hit prediction through rigorous methodology. Audio features alone achieve 85.4% accuracy when properly segmented by era, matching the 85-89% ceiling established across multiple academic studies. Artist metadata pushes performance to 90.8%, confirming that who made the music matters more than what it sounds like. Temporal validation at 89.3% proves the model generalizes to future data without overfitting.
 
